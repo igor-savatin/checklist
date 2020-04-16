@@ -3,17 +3,16 @@ const nodemailer = require('nodemailer');
 
 var body = require('./prepareBody.js');
 var configMail=require('./config/servermail.js');
-var select = require('./select.js');
+var select = require('./database/select.js');
+var query = require('./database/query.js');
 
 let transport = nodemailer.createTransport(configMail);
 
-
-var result= select.getAll();
+var result= select.executeSql(query.command);
 result.then(function(data){
     tableHtml=body.prepareTabletoHtml(data);
     body.html=body.headerTemplate(body.html,'teste super testado');
     body.html=body.bodyTemplate(body.html,tableHtml);
-   // console.log(body.html);
    
     const message = {
         from: 'teste@teste.com', // Sender address
