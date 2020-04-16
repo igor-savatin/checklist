@@ -1,30 +1,27 @@
-html=`
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1 id="headerTemplate">
-        #header# 
-    </h1> 
-        #body#
-</body>
-</html>
-`;
-
-function headerTemplate(html,newhead){
-    return html.replace('#header#',newhead)
-}
-
-function bodyTemplate(html,newhead){
-    return html.replace('#body#',newhead)
+const bodyEmail={
+    html:`<!DOCTYPE html>
+            <html lang="en">
+            <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+            </head>
+            <body>
+            <h1 id="headerTemplate">
+                #header# 
+            </h1> 
+                #body#
+            </body>
+            </html>`,
+    setHeader: function (newhead){
+        this.html=this.html.replace('#header#',newhead)
+    },
+    setBody: function (newhead){
+        this.html=this.html.replace('#body#',newhead)
+    }    
 }
 
 function prepareTabletoHtml(tableJson){
-    
     //console.log(tableJson.metaData.length);
     var tableHtml = "<table style='border: 1px solid black;'>"
     //column name
@@ -44,4 +41,4 @@ function prepareTabletoHtml(tableJson){
     return tableHtml;
 }
 
-module.exports = { html, headerTemplate, bodyTemplate, prepareTabletoHtml }
+module.exports = { bodyEmail , prepareTabletoHtml}
