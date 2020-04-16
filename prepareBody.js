@@ -9,7 +9,7 @@ html=`
 <body>
     <h1 id="headerTemplate">
         #header# 
-    </h1>
+    </h1> 
         #body#
 </body>
 </html>
